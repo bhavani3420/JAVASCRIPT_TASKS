@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            
+           margin-left:600px;
+           margin-top:300px;
+           height:50px;
+           width:150px;
+           text-align:center;
+           background-image: linear-gradient(rgb(241, 76, 192),rgb(115, 255, 0),rgb(115, 247, 247));
+           border-radius:10px;
+           color:rgb(12, 11, 11);
+           font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <input type="submit" value="change Background" id="sub" onclick="change()"></button>
+</body>
+<script>
+    function change(){
+    let x="0123456789ABCDEF"
+    var color='#'
+    for( var i=0;i<6;i++){
+        var j=Math.floor(Math.random()*16);
+        color=color+x[j]
+    }
+    document.body.style.backgroundColor=color;
+    }
+        
+        
+    
+</script>
+</html>
