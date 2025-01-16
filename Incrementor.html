@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            background-color: aqua;
+            padding:10px;
+            width:100px;
+            font-weight:bold;
+            border:2px solid;
+            
+        }
+        div{
+           
+           height:100vh;;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        h1{
+            color:rgb(7, 6, 7);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Count Incrementor</h1>
+    <input type="button" value="click me" onclick="updateCount()">
+    <p id="count">count:0</p>
+    </div>
+
+
+    <script>
+       let count=0
+
+       function updateCount()
+       {
+        count=count+1
+        let ele=document.getElementById("count")
+        ele.innerText="count:"+count
+       }
+    </script>
+</body>
+
+
+
+</html>
