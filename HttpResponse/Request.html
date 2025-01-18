@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display:flex;
+            flex-direction: column;
+            height:100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        #btn{
+            border:2px solid;
+            background-color: aqua;
+            height:70px;
+            width:200px;
+            font-weight:bold;
+            font-size: 1.5rem;
+        }
+        p{
+            text-align: center;
+            font-size: 1.5rem;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+    <input type="button" id="btn" value="click here">
+    <p id="data"></p>
+
+    </div>
+    
+
+    <script>
+        let button=document.getElementById("btn")
+        
+        let content=document.getElementById("data")
+        button.addEventListener('click',sendRequest)
+
+        function sendRequest()
+        {
+            var xhr=new XMLHttpRequest()
+           xhr.open('GET','test.txt',true)
+            xhr.send()
+
+            xhr.onprogress=function()
+            {
+                content.innerText="Loading..."
+            }
+            xhr.onload=function()
+            {
+                content.innerText=xhr.responseText;
+            }
+        }
+    </script>
+</body>
+
+</html>
