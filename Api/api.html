@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    div{
+        display:flex;
+        
+    justify-content:center;
+        flex-direction:column;
+    }
+    #btn{
+        border:2px solid black;
+        background-color: aqua;
+        width:100px;
+        height:50px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <div>
+        <input type="button" id="btn" value="click here">
+        <p id="data"></p>
+
+
+    <script>
+        let btn=document.getElementById("btn")
+        let dataele=document.getElementById("data")
+        btn.addEventListener('click',change)
+        function change(){
+         let xhr=new XMLHttpRequest()
+         xhr.open('GET','api.JSON',true)
+         xhr.send()
+        xhr.onload=function(){
+         if(xhr.status==200)
+         {
+               let result=xhr.responseText
+                result=JSON.parse(result)
+                
+                console.log(result)
+                let str=`<table border="1"><tr>`
+                    for( key in result)
+                    {
+                        str=str+`<th>${key}<\th>`
+                    }
+                    str=str+`<\tr><tr>`
+
+                    for(key in result)
+                    {
+                        str=str+`<td>${result[key]}<\td>`
+                    }
+                    str=str+`</tr></table>`
+                    dataele.innerHTML=str
+
+         }
+         else{
+            dataele.innerText="File Not Found"
+         }
+        }
+    }
+    </script>
+</body>
+
+</html>
