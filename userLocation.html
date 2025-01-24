@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <Script>
+
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(getData,denied)
+        }
+        
+
+        function getData(data)
+        {
+            console.log(data.coords.latitude)
+        }
+        function denied(data)
+        {
+            console.log(data)
+            alert("user denied the location access")
+        }
+    </Script>
+    
+
+</body>
+</html>
