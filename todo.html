@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-image:linear-gradient(blue,rgb(255, 192, 192));
+        }
+        .parent{
+            border:3px solid black;
+            padding:20px;
+            background-color: white;
+        }
+        .todo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        #text {
+            border: 2px solid black;
+            padding: 5px;
+        }
+        button {
+            padding: 8px;
+            border: none;
+            cursor: pointer;
+        }
+        #edit {
+            background-image: linear-gradient(rgb(7, 250, 7),yellow);
+            border:2px solid black;
+            border-radius: 3px;
+            width:50px;
+
+        }
+        #del {
+            background-image:linear-gradient(red,#eeba4b);
+            color: white;
+            border:2px solid black;
+            border-radius:4px;
+            font-weight: bold;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        li {
+            padding: 10px;
+            border: 1px solid black;
+            margin: 5px 0;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            width: 250px;
+            border-radius: 3px;
+        }
+        .delete-btn {
+            background-color: rgb(241, 228, 228);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .updateBtn{
+            background-color:greenyellow;
+            color:black;
+            border:2px solid black;
+            cursor:pointer;
+            padding:5px;
+            border-radius:5px;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="todo">
+        <input type="text" id="text" placeholder="Enter an item">
+        <button onclick="add()" id="edit">Add</button>
+    </div>
+    
+    <ul id="tasks"></ul>
+
+    <button onclick="del()" id="del">Delete Item</button>
+    </div>
+
+    <script>
+        let input = document.getElementById("text");
+        let taskList = document.getElementById("tasks");
+
+        function add() {
+            let val = input.value.trim();
+            if (val === "") {
+                alert("Enter an item");
+                return;
+            }
+
+            let list = document.createElement("li");
+            list.innerText = val;
+
+            let delBtn = document.createElement("button");
+            delBtn.innerText = "❌";
+            delBtn.className = "delete-btn";
+            delBtn.onclick = function() {
+                taskList.removeChild(list);
+            };
+            
+
+            
+
+            list.appendChild(delBtn);
+            taskList.appendChild(list);
+            input.value = ""; // Clear input after adding
+        }
+
+        function del() {
+            if (taskList.children.length === 0) {
+                alert("There is nothing to delete");
+            } else {
+                taskList.removeChild(taskList.lastChild);
+            }
+        }
+    </script>
+
+</body>
+</html>
